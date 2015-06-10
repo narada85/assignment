@@ -1,13 +1,24 @@
-class ArabicNumeralToEnglish            
+class ArabicNumeralToEnglish
+  ONES  = [""," one"," two"," three"," four"," five"," six"," seven"," eight"," nine"," ten"," eleven"," twelve"," thirteen"," fourteen"," fifteen"," sixteen"," seventeen"," eighteen"," nineteen"]
+  
+  TENS = ["",""," twenty"," thirty"," forty"," fifty"," sixty"," seventy"," eighty"," ninety"]
+        
   def translator(numerals)
     numerals = numerals.to_i.abs
     
-    if numerals == 0
-      return "zero" 
+    return "zero" if numerals == 0
+    
+    ones_tens = numerals % 100
+    
+    # init the output
+    val = ""
+    
+    # do ones and tens
+    if ones_tens < 20
+     val += ONES[ones_tens]
     else
-      #manage rest of the numbers here
+     val += TENS[(ones_tens / 10)] + ONES[(ones_tens % 10)]
     end
-
   end
 end
 
