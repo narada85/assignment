@@ -9,9 +9,15 @@ class ArabicNumeralToEnglish
     return "zero" if numerals == 0
     
     ones_tens = numerals % 100
+    hundreds = (numerals / 100) % 10
     
     # init the output
     val = ""
+    
+    # do hundreds
+    if hundreds > 0
+     val = "#{ONES[hundreds]} hundred"
+    end
     
     # do ones and tens
     if ones_tens < 20
